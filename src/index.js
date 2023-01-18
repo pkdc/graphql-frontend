@@ -10,8 +10,9 @@ import {
   InMemoryCache
 } from '@apollo/client';
 
+// console.log(process.env.API_URL);
 const httpLink = createHttpLink({
-  url: "https://learn.01founders.co/api/graphql-engine/v1/graphql"
+  uri: "https://learn.01founders.co/api/graphql-engine/v1/graphql"
 });
 
 const client = new ApolloClient({
