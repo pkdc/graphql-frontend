@@ -1,8 +1,11 @@
 import React from "react";
 import { useQuery, gql } from "@apollo/client";
-import './App.css';
+import styles from './App.module.css';
 import Card from './UI/Card';
 import Chart from './Chart';
+import UserInfo from "./UserInfo";
+import UserProgress from "./UserProgress";
+import FinishedProject from "./FinishedProject";
 
 function App() {  
   // somehow can't query id field for transcation, and campus field or createdAt field for user
@@ -49,21 +52,25 @@ function App() {
     // console.log("userProgress: ", data.userInfo);
     // console.log("projectTransaction: ", data.projectTransaction);
   return (
-      <>
-      <Card>
-        <Chart data={data && data.userInfo}>
-        </Chart>
-      </Card>
-      <Card>
-        <Chart data={data && data.userProgress}>
-        </Chart>
-      </Card>
-      <Card>
-        <Chart data={data && data.projectTransaction}>
-        </Chart>
-      </Card>
-      </>
-    
-  );
+        <>
+        {!data && <h1 className={styles["loading"]}>Loading...</h1>}
+        {data && (
+          <>
+            <Card className={"user-info"}>
+              <UserInfo data={data && data.userInfo}>
+              </UserInfo>
+            </Card>
+            <Card>
+              <UserProgress data={data && data.userProgress}>
+              </UserProgress>
+            </Card>
+            <Card>
+              <FinishedProject data={data && data.projectTransaction}>
+              </FinishedProject>
+            </Card>
+          </>
+        )}
+        </>
+      );
 }
 export default App;
