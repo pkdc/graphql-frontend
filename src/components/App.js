@@ -4,7 +4,7 @@ import styles from './App.module.css';
 import Card from './UI/Card';
 import Chart from './Chart';
 import UserInfo from "./UserInfo";
-import UserProgress from "./UserProgress";
+import UserGainedXP from "./UserGainedXP";
 import FinishedProject from "./FinishedProject";
 
 function App() {  
@@ -32,7 +32,7 @@ function App() {
         }
       
         userProgress: progress(
-          where: {_and: [{object: {type: {_eq: "project"}}}, {isDone: {_eq: true}}, {grade: {_gt: 0}}]}
+          where: {_and: [{object: {type: {_eq: "project"}}}, {isDone: {_eq: true}}, {grade: {_gt: 1}}]}
           order_by: {createdAt: asc}
         ) {
           id
@@ -51,6 +51,16 @@ function App() {
     // console.log("userInfo: ", data.userInfo);
     // console.log("userProgress: ", data.userInfo);
     // console.log("projectTransaction: ", data.projectTransaction);
+    let projectNames = null;   
+      if (data) {
+        projectNames = [...new Set(data.projectTransaction.map((el) => el.object.name))];
+        console.log("project names", projectNames);
+        // const finishedProjectNames = projectNames.filter((el) => data.userProgress.grade >= 1); // wrong
+        // console.log("finished project names", finishedProjectNames);
+
+
+      }
+
   return (
         <>
         {!data && <h1 className={styles["loading"]}>Loading...</h1>}
@@ -61,11 +71,11 @@ function App() {
               </UserInfo>
             </Card>
             <Card>
-              <UserProgress data={data && data.userProgress}>
-              </UserProgress>
+              <UserGainedXP data={data && data.projectTransaction}>
+              </UserGainedXP>
             </Card>
             <Card>
-              <FinishedProject data={data && data.projectTransaction}>
+              <FinishedProject data={data && data.userProgress}>
               </FinishedProject>
             </Card>
           </>
