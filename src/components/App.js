@@ -32,14 +32,16 @@ function App() {
         }
       
         userProgress: progress(
+          distinct_on: objectId
           where: {_and: [{object: {type: {_eq: "project"}}}, {isDone: {_eq: true}}, {grade: {_gt: 1}}]}
-          order_by: {createdAt: asc}
+          order_by: {objectId: asc}
         ) {
           id
           object {
             id
             name
           }
+          objectId
           grade
           createdAt
         }
@@ -55,8 +57,26 @@ function App() {
       if (data) {
         projectNames = [...new Set(data.projectTransaction.map((el) => el.object.name))];
         console.log("project names", projectNames);
-        // const finishedProjectNames = projectNames.filter((el) => data.userProgress.grade >= 1); // wrong
+        const finishedProjectNames = projectNames.filter((projectName) => {
+          data.userProgress.forEach(function(progressDetail) {
+            // console.log("progressDetail", progressDetail["object"]["name"]);
+            if (progressDetail["object"]["name"] === projectName) {
+              console.log("matched", progressDetail["object"]["name"])
+              return true;
+            }
+          }
+        )});
+          // console.log("test obj", data.userProgress);
+          // if (el === data.userProgress["object"]) {
+          //   console.log("passed pro", el);
+          // } // wrong
+        // });
         // console.log("finished project names", finishedProjectNames);
+        // console.log("userpro", data.userProgress);
+
+        // let projectDetailsArr = [];
+        // data.userProgress.forEach((el) => projectDetailsArr.push(el.object["name"]));
+        // console.log("eachProName", projectDetailsArr);
 
 
       }
