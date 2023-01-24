@@ -124,7 +124,7 @@ function App() {
               </UserGainedXP>
             </Card>
             <Card>
-              <FinishedProject data={data && data.userProgress}>
+              <FinishedProject data={data && finishedProjectArr}>
               </FinishedProject>
             </Card>
           </>

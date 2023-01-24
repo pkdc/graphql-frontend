@@ -1,10 +1,16 @@
 import React from "react";
+import Card from "./UI/Card";
+import ProjectChart from "./ProjectChart";
 
-const FinishedProject = () => {
+const FinishedProject = (props) => {
+    if (!props.data) {
+        return <h2>No Record Found</h2>
+    }
     return (
-        <div>
+        <Card>
             <h2>Finished Project</h2>
-        </div>
+            <ProjectChart data={props.data}/>
+        </Card>
     );
 };
 
