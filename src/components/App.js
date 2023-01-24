@@ -90,24 +90,25 @@ function App() {
         console.log("finished project names", finishedProjectNames);
       }
 
-      let finishedProject = {};
+      let finishedProjectArr = [];   
+      let projectStored = [];
       for (let i = 0; i < finishedProjectNames.length; i++) {
         for (let j = 0; j < data.projectTransaction.length; j++) {
           // console.log("project name: ", data.projectTransaction[j]["object"]["name"]);
           // console.log("project xp: ", data.projectTransaction[j]["amount"]);
           if (data.projectTransaction[j]["object"]["name"] === finishedProjectNames[i]) {
-            console.log("finishedProject wip", finishedProject);
-            if (finishedProject[finishedProjectNames[i]] === undefined) {
-              finishedProject[finishedProjectNames[i]] = data.projectTransaction[j]["amount"];
+            // console.log("finishedProject wip", finishedProject);
+            if (!projectStored.includes(finishedProjectNames[i])) {
+              const singleFinishedProject = {};
+              singleFinishedProject[finishedProjectNames[i]] = data.projectTransaction[j]["amount"];
+              finishedProjectArr.push(singleFinishedProject);
+              projectStored.push(finishedProjectNames[i]);
             }
-          if (finishedProject[finishedProjectNames[i]] < data.projectTransaction[j]["amount"]) {
-              console.log("original larger");
-              finishedProject[finishedProjectNames[i]] = data.projectTransaction[j]["amount"];
-            }    
-          }   
+          }
         }
       }
-      console.log("finishedProject", finishedProject);
+      // console.log("finishedProject", finishedProject);
+      console.log("finishedProjectArr", finishedProjectArr);
 
   return (
         <>
