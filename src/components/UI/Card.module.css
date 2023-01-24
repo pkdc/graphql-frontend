@@ -4,10 +4,11 @@
     color: #5f5e5e;
     background: #E7E6E7;
     padding: 0.6rem 0.75rem;
-    margin: 1rem;
+    margin: 2rem 5rem;
     opacity: 0.8;
 }
 
-.user-info {
+h1, h2 {
+    color: #FE9400;
     
 }
