@@ -1,0 +1,24 @@
+.bar-chart {
+    display: block;
+    transform: rotateX(180deg);
+}
+
+.x-axis {
+
+}
+
+.y-axis {
+
+}
+
+.bars {
+}
+
+.bar {
+    fill: #5f5e5e;
+    width: 20px;
+}
+
+.project-name {
+    /* transform: rotateZ(180deg); */
+}

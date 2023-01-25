@@ -1,6 +1,7 @@
 import React from "react";
 import Card from "./UI/Card";
 import ProjectChart from "./ProjectChart";
+import styles from "./FinishedProject.module.css";
 
 const FinishedProject = (props) => {
     if (!props.data) {
