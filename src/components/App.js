@@ -115,18 +115,22 @@ function App() {
         {!data && <h1 className={styles["loading"]}>Loading...</h1>}
         {data && (
           <>
-            <Card className={"user-info"}>
-              <UserInfo data={data && data.userInfo}>
-              </UserInfo>
-            </Card>
-            <Card>
-              <UserGainedXP data={data && data.projectTransaction}>
-              </UserGainedXP>
-            </Card>
-            <Card>
-              <FinishedProject data={data && finishedProjectArr}>
-              </FinishedProject>
-            </Card>
+            <div className={styles["user-info-div"]}>
+              <Card className={"user-info"}>
+                <UserInfo data={data && data.userInfo}>
+                </UserInfo>
+              </Card>
+            </div>
+            <div className={styles["charts"]}>
+              <Card>
+                <UserGainedXP data={data && data.projectTransaction}>
+                </UserGainedXP>
+              </Card>
+              <Card>
+                <FinishedProject data={data && finishedProjectArr}>
+                </FinishedProject>
+              </Card>
+            </div>
           </>
         )}
         </>

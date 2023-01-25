@@ -1,5 +1,4 @@
 .bar-chart {
-    display: block;
     transform: rotateX(180deg);
 }
 
@@ -20,5 +19,5 @@
 }
 
 .project-name {
-    /* transform: rotateZ(180deg); */
+    transform: rotateX(180deg) translateY(-450px);
 }

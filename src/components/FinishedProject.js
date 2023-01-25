@@ -7,10 +7,22 @@ const FinishedProject = (props) => {
     if (!props.data) {
         return <h2>No Record Found</h2>
     }
+
+    const xpArr = props.data.map(el => {
+        const [xp] = Object.values(el);
+        return xp;
+    });
+    console.log("xpArr", xpArr);
+
+    const namesArr = props.data.map(el => {
+        const [name] = Object.keys(el);
+        return name;
+    });
+    console.log("nameArr", namesArr);
     return (
         <Card>
             <h2>Finished Project</h2>
-            <ProjectChart data={props.data}/>
+            <ProjectChart xpArr={xpArr} projectNamesArr={namesArr}/>
         </Card>
     );
 };
