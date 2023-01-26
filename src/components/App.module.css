@@ -1,5 +1,5 @@
 .loading {
-    color: #44cf85;
+    color: var(--emerald);
     text-align: center;
     font-size: 100px;
     margin: 20%;
