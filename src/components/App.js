@@ -91,18 +91,18 @@ function App() {
       }
 
       let finishedProjectArr = [];   
-      let projectStored = [];
+      let storedProject = [];
       for (let i = 0; i < finishedProjectNames.length; i++) {
         for (let j = 0; j < data.projectTransaction.length; j++) {
           // console.log("project name: ", data.projectTransaction[j]["object"]["name"]);
           // console.log("project xp: ", data.projectTransaction[j]["amount"]);
           if (data.projectTransaction[j]["object"]["name"] === finishedProjectNames[i]) {
             // console.log("finishedProject wip", finishedProject);
-            if (!projectStored.includes(finishedProjectNames[i])) {
+            if (!storedProject.includes(finishedProjectNames[i])) {
               const singleFinishedProject = {};
               singleFinishedProject[finishedProjectNames[i]] = data.projectTransaction[j]["amount"];
               finishedProjectArr.push(singleFinishedProject);
-              projectStored.push(finishedProjectNames[i]);
+              storedProject.push(finishedProjectNames[i]);
             }
           }
         }

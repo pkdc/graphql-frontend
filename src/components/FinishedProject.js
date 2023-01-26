@@ -19,6 +19,7 @@ const FinishedProject = (props) => {
         return name;
     });
     console.log("nameArr", namesArr);
+    
     return (
         <Card>
             <h2>Finished Project</h2>

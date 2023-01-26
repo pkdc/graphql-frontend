@@ -8,7 +8,7 @@ const ProjectChart = (props) => {
     console.log("height", svgHeight);
     
     return (
-        <svg className={styles["bar-chart"]} width={550} height={svgHeight/1000}>
+        <svg className={styles["bar-chart"]} width={550} height={svgHeight/1000 + 200}>
         <title>A bar chart with XP of each finished project</title>
         <g>
             <text className={styles["y-axis"]}>XP</text>
@@ -19,7 +19,14 @@ const ProjectChart = (props) => {
             <line x1="5" y1="90" x2="3500" y2="90"></line>
         </g>
         <g className={styles["bars"]}>
-            
+            {
+                props.xpArr.map((xp, i) => (
+                    <g>
+                        <text className={styles["project-name"]} x={50} y={200}>{props.projectNamesArr[i]}</text>
+                        <rect height={xp/1000} x={30 + i*20} y={30} className={styles["bar"]}></rect>
+                    </g>
+                ))
+            }
             {/* {props.data.map((projectDetail, i) => {
                 console.log("pd", projectDetail);
                 for (const [key, value] of Object.entries(projectDetail)) {
@@ -32,6 +39,7 @@ const ProjectChart = (props) => {
                 }
             })} */}
         </g>
+        
         </svg>
     );
 };

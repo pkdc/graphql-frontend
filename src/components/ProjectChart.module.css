@@ -20,4 +20,5 @@
 
 .project-name {
     transform: rotateX(180deg) translateY(-450px);
+    /* opacity: 0; */
 }
