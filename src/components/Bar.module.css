@@ -8,7 +8,7 @@
     fill: #fe9400;
 }
 
-.project-name {
+.project-name, .project-xp {
     transform: rotateX(180deg) translateY(-450px);
     opacity: 0;
     fill: #fe9400;
