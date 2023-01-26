@@ -1,14 +1,21 @@
 import React from "react";
-import { useState } from "react";
 import styles from "./ProjectChart.module.css";
+import Bar from "./Bar";
 
 const ProjectChart = (props) => {
     
+
     const svgHeight = props.xpArr.reduce((max, cur) => Math.max(max, cur));
     console.log("height", svgHeight);
+
+    const bars = document.querySelectorAll(".bar");
+
+    if (!bars) {console.log(bars);
+        bars.forEach((bar) => bar.addEventLostener("mousever", ()=> console.log(bar)))
+    }
     
     return (
-        <svg className={styles["bar-chart"]} width={550} height={svgHeight/1000 + 200}>
+        <svg className={styles["bar-chart"]} width={550} height={svgHeight/1000 + 150}>
         <title>A bar chart with XP of each finished project</title>
         <g>
             <text className={styles["y-axis"]}>XP</text>
@@ -16,15 +23,12 @@ const ProjectChart = (props) => {
         </g>
         <g>
             <text className={styles["x-axis"]}>Time</text>
-            <line x1="5" y1="90" x2="3500" y2="90"></line>
+            <line x1="5" y1="90" x2="350" y2="90"></line>
         </g>
         <g className={styles["bars"]}>
             {
                 props.xpArr.map((xp, i) => (
-                    <g>
-                        <text className={styles["project-name"]} x={50} y={200}>{props.projectNamesArr[i]}</text>
-                        <rect height={xp/1000} x={30 + i*20} y={30} className={styles["bar"]}></rect>
-                    </g>
+                    <Bar key={i} height={xp} name={props.projectNamesArr[i]} num={i}/>
                 ))
             }
             {/* {props.data.map((projectDetail, i) => {

@@ -2,7 +2,6 @@ import React from "react";
 import { useQuery, gql } from "@apollo/client";
 import styles from './App.module.css';
 import Card from './UI/Card';
-import Chart from './Chart';
 import UserInfo from "./UserInfo";
 import UserGainedXP from "./UserGainedXP";
 import FinishedProject from "./FinishedProject";
