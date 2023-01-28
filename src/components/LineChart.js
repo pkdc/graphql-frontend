@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./LineChart.module.css";
 
 const LineChart = (props) => {
+    
     return (
         <svg version="1.2" className={styles["line-chart"]} width="500" height="300">
             <title>{props.title}</title>
@@ -14,9 +15,12 @@ const LineChart = (props) => {
             <line className={styles["x-axis"]} x1="50" y1="35" x2="580" y2="35"></line>
         </g>
             <polyline className={styles["polyline"]}
-            points="
-              ${}
-              "/>
+            points= {props.data.map(el => {
+                for (const [key, value] of Object.entries(el)) {
+                    return `${value} ${key*10}`;
+                }
+            })}
+            />
         </svg>
     );
 };
