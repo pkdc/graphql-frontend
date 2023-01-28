@@ -3,7 +3,7 @@ import { useQuery, gql } from "@apollo/client";
 import styles from './App.module.css';
 import Card from './UI/Card';
 import UserInfo from "./UserInfo";
-import UserGainedXP from "./UserGainedXP";
+import UserProgressionByLv from "./UserProgressionByLv";
 import FinishedProject from "./FinishedProject";
 
 function App() {  
@@ -44,6 +44,19 @@ function App() {
           grade
           createdAt
         }
+
+        projectTransactionLevel: transaction(
+          limit: 35
+          where: {_and: [{object: {type: {_eq: "project"}}}, {type: {_ilike: "level"}}, {userId: {_eq: 560}}]}
+          order_by: {amount: asc}
+         ) {
+          amount
+          object {
+            id
+            name
+          }
+          createdAt
+        }
       }
     `;
 
@@ -51,9 +64,9 @@ function App() {
 // remove tron and math skill
     const { data } = useQuery(QUERY);
     data && console.log("data: ", data);
-    // console.log("userInfo: ", data.userInfo);
+    // data && console.log("userInfo: ", data.userInfo);
     // console.log("userProgress: ", data.userProgress);
-    // console.log("projectTransaction: ", data.projectTransaction);
+    data && console.log("projectTransactionLevel: ", data.projectTransactionLevel);
     
     let finishedProjectNames = [];
 
@@ -122,8 +135,8 @@ function App() {
             </div>
             <div className={styles["charts"]}>
               <Card>
-                <UserGainedXP data={data && data.projectTransaction}>
-                </UserGainedXP>
+                <UserProgressionByLv data={data && data.projectTransaction}>
+                </UserProgressionByLv>
               </Card>
               <Card>
                 <FinishedProject data={data && finishedProjectArr}>
