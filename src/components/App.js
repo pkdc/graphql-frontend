@@ -69,6 +69,9 @@ function App() {
     data && console.log("projectTransactionLevel: ", data.projectTransactionLevel);
     
     let finishedProjectNames = [];
+    let finishedProjectArr = [];   
+    let storedProject = [];
+    let levelTimeArr = [];
 
       if (data) {
     //     console.log("userPro", data.userProgress);
@@ -100,10 +103,8 @@ function App() {
           }
         );
         console.log("finished project names", finishedProjectNames);
-      }
 
-      let finishedProjectArr = [];   
-      let storedProject = [];
+        
       for (let i = 0; i < finishedProjectNames.length; i++) {
         for (let j = 0; j < data.projectTransaction.length; j++) {
           // console.log("project name: ", data.projectTransaction[j]["object"]["name"]);
@@ -121,6 +122,20 @@ function App() {
       }
       // console.log("finishedProject", finishedProject);
       console.log("finishedProjectArr", finishedProjectArr);
+      const beginDateTimestamp = Date.parse("2021-10-05T17:15:38.59845+00:00");
+      console.log("beginDateTimestamp", beginDateTimestamp);
+      levelTimeArr = data.projectTransactionLevel.map(el => {
+        let lvTimeObj = {};
+        let createdDateTimestamp = Date.parse(el.createdAt);
+        console.log("createdDateTimestamp", createdDateTimestamp);
+        let levelUpTimestamp = createdDateTimestamp - beginDateTimestamp;
+        let levelUpTimeInDays = levelUpTimestamp/1000/3600/24;
+        lvTimeObj[el.amount] = levelUpTimeInDays;
+        console.log("levelUptimestamp", levelUpTimestamp);
+        return lvTimeObj;
+      });
+      console.log("levelTimeArr", levelTimeArr);
+      }
 
   return (
         <>
@@ -135,7 +150,8 @@ function App() {
             </div>
             <div className={styles["charts"]}>
               <Card>
-                <UserProgressionByLv data={data && data.projectTransaction}>
+                <UserProgressionByLv 
+                data={data && levelTimeArr}>
                 </UserProgressionByLv>
               </Card>
               <Card>

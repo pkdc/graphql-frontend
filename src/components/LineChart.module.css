@@ -1,0 +1,30 @@
+.line-chart {
+    transform: rotateX(180deg);
+}
+
+.polyline {
+    fill: none;
+    stroke: #e7e6e7;
+    stroke-width: 2;
+    
+}
+
+.x-axis-label {
+    fill: #E7E6E7;
+    transform: rotateX(180deg) translateY(-33px);
+}
+
+.x-axis {
+    stroke: #E7E6E7;
+    stroke-width: 2;
+}
+
+.y-axis-label {
+    fill: #E7E6E7;
+    transform: rotateX(180deg) translateY(-450px);
+}
+
+.y-axis {
+    stroke: #E7E6E7;
+    stroke-width: 2;
+}

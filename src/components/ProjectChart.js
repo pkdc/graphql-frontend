@@ -15,14 +15,14 @@ const ProjectChart = (props) => {
     }
     
     return (
-        <svg className={styles["bar-chart"]} width={650} height={svgHeight/1000 + 150}>
+        <svg version="1.2" className={styles["bar-chart"]} width={650} height={svgHeight/1000 + 150}>
         <title>A bar chart with XP of each finished project</title>
         <g>
             <text className={styles["y-axis-label"]} x="10" y="280" >XP</text>
             <line className={styles["y-axis"]} x1="50" y1="35" x2="50" y2="350"></line>
         </g>
         <g>
-            <text className={styles["x-axis-label"]} x="300" y ="25">Time</text>
+            <text className={styles["x-axis-label"]} x="300" y ="25">Projects</text>
             <line className={styles["x-axis"]} x1="50" y1="35" x2="580" y2="35"></line>
         </g>
         <g className={styles["bars"]}>
