@@ -9,6 +9,7 @@
     display: block;
 }
 
-.charts {
+.charts-container {
     display: flex;
+    flex-wrap: wrap;
 }

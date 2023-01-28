@@ -155,13 +155,13 @@ function App() {
                 </UserInfo>
               </Card>
             </div>
-            <div className={styles["charts"]}>
-              <Card>
+            <div className={styles["charts-container"]}>
+              <Card className={styles["charts"]}>
                 <UserProgressionByLv 
                 data={data && levelTimeArr}>
                 </UserProgressionByLv>
               </Card>
-              <Card>
+              <Card className={styles["charts"]}>
                 <FinishedProject data={data && finishedProjectArr}>
                 </FinishedProject>
               </Card>
