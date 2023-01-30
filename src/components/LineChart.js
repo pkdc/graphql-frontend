@@ -12,7 +12,7 @@ const LineChart = (props) => {
         </g>
         <g>
             <text className={styles["x-axis-label"]} x="280" y ="25">{props.xLabel}</text>
-            <line className={styles["x-axis"]} x1={props.originX} y1={props.originY} x2="580" y2={props.originY}></line>
+            <line className={styles["x-axis"]} x1={props.originX} y1={props.originY} x2="650" y2={props.originY}></line>
         </g>
             <polyline className={styles["polyline"]}
             points= {props.data.map(el => {

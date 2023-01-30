@@ -19,7 +19,7 @@ const UserProgressionByXp = (props) => {
 
     const xpArr = props.data.map(el => {
         const [xp] = Object.keys(el);
-        return +xp;
+        return +xp/1000;
     });
     console.log("xpArr", xpArr);
 
@@ -31,7 +31,6 @@ const UserProgressionByXp = (props) => {
             const accuXp = xpArr.slice(0, i).reduce((accu, cur) => accu + cur, 0);
             console.log("accuxp", accuXp);
             accuXpArr.push(accuXp);
-            
         }
         console.log("accuxpArr", accuXpArr);  
 
@@ -39,6 +38,14 @@ const UserProgressionByXp = (props) => {
         const [time] = Object.values(el);
         return time;
     });
+
+    let accuXpTimeArr = [];
+    for (let i = 0; i < accuXpArr.length; i++) {
+        let accuXpTimeObj = {};
+        accuXpTimeObj[timeArr[i]] = accuXpArr[i];
+        accuXpTimeArr.push(accuXpTimeObj);
+    }
+    console.log("accuxpTimeArr", accuXpTimeArr);
 
 // accuxp vs time arr ofobj
 
@@ -58,12 +65,12 @@ const UserProgressionByXp = (props) => {
             title="A Line Chart showing the User Progress By Xp"
             xLabel="Time(Days)"
             yLabel="Xp"
-            data={props.data}
+            data={accuXpTimeArr}
             originX = {50}
             originY = {35}
             maxX={Math.floor(maxX)}
             maxY={maxY/1}
-            yScaleFactor={0.001}
+            yScaleFactor={0.5}
             />
         </Card>
     )
