@@ -21,10 +21,20 @@
 
 .y-axis-label {
     fill: #E7E6E7;
-    transform: rotateX(180deg) translateY(-450px);
+    transform: rotateX(180deg) translateY(-400px);
 }
 
 .y-axis {
     stroke: #E7E6E7;
     stroke-width: 2;
+}
+
+.x-labels {
+    fill: #E7E6E7;
+    transform: rotateX(180deg) translateY(-50px);
+}
+
+.y-labels {
+    fill: #E7E6E7;
+    transform: rotateX(180deg) translateY(-50px) translateX(-20px);
 }

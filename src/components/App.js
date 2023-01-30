@@ -128,11 +128,11 @@ function App() {
       levelTimeArr = data.projectTransactionLevel.map(el => {
         let lvTimeObj = {};
         let createdDateTimestamp = Date.parse(el.createdAt);
-        console.log("createdDateTimestamp", createdDateTimestamp);
+        console.log("lv createdDateTimestamp", createdDateTimestamp);
         let levelUpTimestamp = createdDateTimestamp - beginDateTimestamp;
         let levelUpTimeInDays = levelUpTimestamp/1000/3600/24;
         lvTimeObj[el.amount] = levelUpTimeInDays;
-        console.log("levelUptimestamp", levelUpTimestamp);
+        // console.log("levelUptimestamp", levelUpTimestamp);
         return lvTimeObj;
       });
       levelTimeArr.unshift({0:0});
