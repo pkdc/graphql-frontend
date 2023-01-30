@@ -150,9 +150,10 @@ function App() {
           console.log("xpGainedtimestamp", xpGainedTimestamp);
           return xpTimeObj;
         });
-        xpTimeArr.unshift({0:0});
+        
         const [finalXp] = Object.keys(xpTimeArr[xpTimeArr.length-1]);
-        let xpEndPt = {};
+        xpTimeArr.unshift({0:0});
+        // let xpEndPt = {};
         // endPt[finalXp] = now;
         // xpTimeArr.unshift(endPt);
         console.log("xpTimeArr", xpTimeArr);
