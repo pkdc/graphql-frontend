@@ -70,6 +70,7 @@ function App() {
     let storedProject = [];
     let levelTimeArr = [];
     let xpTimeArr = [];
+    let lastProject, currentLv;
       if (data) {
         // finished project bar chart
         data.userProgress.forEach(function(progressDetail) {
@@ -147,7 +148,7 @@ function App() {
           let xpGainedTimeInDays = xpGainedTimestamp/1000/3600/24;
           const [xpAmt] = Object.values(el);
           xpTimeObj[xpAmt] = xpGainedTimeInDays;
-          console.log("xpGainedtimestamp", xpGainedTimestamp);
+          // console.log("xpGainedtimestamp", xpGainedTimestamp);
           return xpTimeObj;
         });
         
@@ -157,6 +158,11 @@ function App() {
         // endPt[finalXp] = now;
         // xpTimeArr.unshift(endPt);
         console.log("xpTimeArr", xpTimeArr);
+
+        // Basic user identification
+        lastProject = finishedProjectNames[finishedProjectNames.length-1]; 
+        console.log("lastProject", lastProject);
+        [currentLv] = Object.keys(levelTimeArr[levelTimeArr.length-1]);
       }
 
   return (
@@ -166,8 +172,10 @@ function App() {
           <>
             <div className={styles["user-info-div"]}>
               <Card className={"user-info"}>
-                <UserInfo data={data && data.userInfo}>
-                </UserInfo>
+                <UserInfo data={data && data.userInfo}
+                lastProject={lastProject}
+                currentLv={currentLv}
+                />
               </Card>
             </div>
             <div className={styles["charts-container"]}>

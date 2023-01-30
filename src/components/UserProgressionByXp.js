@@ -7,7 +7,7 @@ const UserProgressionByXp = (props) => {
     if (!props.data) {
         return <h2>No Record Found</h2>
     }
-    console.log("proByXp", props.data);
+    // console.log("proByXp", props.data);
 
     props.data.sort((a,b) => {
         const [v1] = Object.values(a);
@@ -21,7 +21,7 @@ const UserProgressionByXp = (props) => {
         const [xp] = Object.keys(el);
         return +xp/1000;
     });
-    console.log("xpArr", xpArr);
+    // console.log("xpArr", xpArr);
 
     // let sum = 0;
     let accuXpArr = [];
@@ -29,10 +29,10 @@ const UserProgressionByXp = (props) => {
     // for (let maxI = 0; maxI < xpArr.length; maxI++) {
         for (let i = 1; i <= xpArr.length; i++) {            
             const accuXp = xpArr.slice(0, i).reduce((accu, cur) => accu + cur, 0);
-            console.log("accuxp", accuXp);
+            // console.log("accuxp", accuXp);
             accuXpArr.push(accuXp);
         }
-        console.log("accuxpArr", accuXpArr);  
+        // console.log("accuxpArr", accuXpArr);  
 
     const timeArr = props.data.map(el => {
         const [time] = Object.values(el);

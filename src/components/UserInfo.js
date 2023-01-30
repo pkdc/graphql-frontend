@@ -10,6 +10,8 @@ const UserInfo = (props) => {
         <div className={styles["user-info"]}>
             <h2>User Info</h2>
             <h3>Username: {props.data[0].login}</h3>
+            <h3>Latest Finished Project: {props.lastProject}</h3>
+            <h3>Current Level: {props.currentLv}</h3>
         </div>
     )
 };
