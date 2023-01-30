@@ -22,6 +22,7 @@ const UserProgressionByLv = (props) => {
             originY = {35}
             maxX={Math.floor(maxX)}
             maxY={maxY/1}
+            yScaleFactor={6}
             />
         </Card>
     )

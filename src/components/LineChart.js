@@ -17,7 +17,7 @@ const LineChart = (props) => {
             <polyline className={styles["polyline"]}
             points= {props.data.map(el => {
                 for (const [key, value] of Object.entries(el)) {
-                    return `${value+props.originX} ${(key*6)+props.originY}`;
+                    return `${value+props.originX} ${(key*props.yScaleFactor)+props.originY}`;
                 }
             })}
             />
@@ -31,7 +31,7 @@ const LineChart = (props) => {
             <text x={props.originX} y={props.originY}>0</text>
             <text></text>
             <text></text>
-            <text x={props.originX} y={-(props.maxY*6-props.originY)}>{props.maxY}</text>
+            <text x={props.originX} y={-(props.maxY*props.yScaleFactor)+props.originY}>{props.maxY}</text>
         </g>
         </svg>
     );
